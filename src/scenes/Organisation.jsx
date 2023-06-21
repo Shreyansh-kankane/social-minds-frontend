@@ -5,7 +5,7 @@ const Organisation = () => {
   return (
     <div>  
         <Navbar/> 
-        hi orga
+        hi organisation
     </div>
   )
 }
