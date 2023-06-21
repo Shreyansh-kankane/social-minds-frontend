@@ -16,6 +16,7 @@ import { setLogin } from "state";
 import Dropzone from "react-dropzone";
 import FlexBetween from "components/FlexBetween";
 import { BASE_URI } from "helper";
+import { toast } from "react-hot-toast";
 
 const registerSchema = yup.object().shape({
   firstName: yup.string().required("required"),
@@ -57,13 +58,14 @@ const Form = () => {
   const isRegister = pageType === "register";
 
   const register = async (values, onSubmitProps) => {
+
     // this allows us to send form info with image
     const formData = new FormData();
     for (let value in values) {
       formData.append(value, values[value]);
     }
     formData.append("picturePath", values.picture.name);
-
+    toast.loading("loading...");
     const savedUserResponse = await fetch(
       `${BASE_URI}/auth/register`,
       {
@@ -71,22 +73,34 @@ const Form = () => {
         body: formData,
       }
     );
+    if(savedUserResponse.status!==201){
+      toast.dismiss();
+      toast.error("User already in use");
+      return;
+    }
     const savedUser = await savedUserResponse.json();
     onSubmitProps.resetForm();
-
     if (savedUser) {
       setPageType("login");
+      toast.dismiss();
+      toast.success("register successfully");
     }
   };
 
   const login = async (values, onSubmitProps) => {
+    toast.loading("loading...");
     const loggedInResponse = await fetch( `${BASE_URI}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
 
-  const loggedIn = await loggedInResponse.json();
+    if(loggedInResponse.status!==200){
+      toast.dismiss();
+      toast.error("invalid creadentials");
+      return;
+    }
+    const loggedIn = await loggedInResponse.json();
     onSubmitProps.resetForm();
     if (loggedIn) {
       dispatch(
@@ -96,6 +110,8 @@ const Form = () => {
         })
       );
       navigate("/home");
+      toast.dismiss();
+      toast.success("Logged in succesfully");
     }
   };
 
@@ -197,7 +213,7 @@ const Form = () => {
                       >
                         <input {...getInputProps()} />
                         {!values.picture ? (
-                          <p>Add Picture Here</p>
+                          <p>Add Picture Here *REQUIRED </p>
                         ) : (
                           <FlexBetween>
                             <Typography>{values.picture.name}</Typography>
