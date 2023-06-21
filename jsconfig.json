@@ -1,0 +1,5 @@
+{  
+    "compilerOptions": {
+    "baseUrl": "src"  },
+    "include": ["src", "src/scenes/landingPage/bubble.js"]
+}
