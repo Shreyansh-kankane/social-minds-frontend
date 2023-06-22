@@ -55,7 +55,7 @@ const PostWidget = ({
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ userId: loggedInUserId }),
+      body: JSON.stringify({ userId: postUserId }),
     });
     const updatedPost = await response.json();
     console.log(updatedPost);
@@ -64,7 +64,7 @@ const PostWidget = ({
 
   const deletePost = async ()=>{
     toast.loading("loading...")
-    const response = await fetch(`${BASE_URI}/posts/${postId}/delete`,{
+    const response = await fetch(`http://localhost:3001/posts/${postId}/delete`,{
       method: "DELETE",
       headers:{
          Authorization: `Bearer ${token}`,
@@ -79,7 +79,7 @@ const PostWidget = ({
     }
     else{
       toast.dismiss();
-      toast.success("cannot delete !");
+      toast.error("cannot delete !!");
     }
     //const deletedPost = await response.json();
   }
