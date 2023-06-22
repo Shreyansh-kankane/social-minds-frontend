@@ -79,7 +79,7 @@ const PostWidget = ({
     }
     else{
       toast.dismiss();
-      toast.error("cannot delete !!");
+      toast.error("cannot delete !");
     }
     //const deletedPost = await response.json();
   }

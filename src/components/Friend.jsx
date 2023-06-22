@@ -6,6 +6,7 @@ import { setFriends } from "state";
 import FlexBetween from "./FlexBetween";
 import UserImage from "./UserImage";
 import { BASE_URI } from "helper";
+import { toast } from "react-hot-toast";
 
 const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const dispatch = useDispatch();
@@ -31,6 +32,13 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
       }
     )
     const data = await res.json();
+    console.log(data);
+    if(isFriend){
+      toast.success("friend removed");
+    }
+    else{
+      toast.success("friend added");
+    }
     dispatch(setFriends({ friends: data }));    
   };
 
