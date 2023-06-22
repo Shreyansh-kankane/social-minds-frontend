@@ -12,7 +12,7 @@ const FriendListWidget = ({ userId }) => {
   const token = useSelector((state) => state.token);
   const friends = useSelector((state) => state.user.friends);
   const [load,setLoad] = useState(true);
-
+  const loggedInUserId = useSelector((state) => state.user._id);
 
   useEffect(() => {
     const getFriends = async () => {
@@ -52,6 +52,8 @@ const FriendListWidget = ({ userId }) => {
               name={`${friend.firstName} ${friend.lastName}`}
               subtitle={friend.occupation}
               userPicturePath={friend.picturePath}
+              userId={userId}
+              loggedInUserId={loggedInUserId}
             />
           ))
         ) : (
