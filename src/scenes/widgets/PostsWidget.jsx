@@ -10,8 +10,9 @@ const PostsWidget = ({ userId,isProfile = false }) => {
   const [load,setLoad] = useState(true);
 
   const dispatch = useDispatch();
-  const posts = useSelector((state) => state.posts);;
+  const posts = useSelector((state) => state.posts);
   const token = useSelector((state) => state.token);
+
 
   useEffect(() => {
 
