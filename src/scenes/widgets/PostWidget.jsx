@@ -64,7 +64,7 @@ const PostWidget = ({
 
   const deletePost = async ()=>{
     toast.loading("loading...")
-    const response = await fetch(`http://localhost:3001/posts/${postId}/delete`,{
+    const response = await fetch(`${BASE_URI}/posts/${postId}/delete`,{
       method: "DELETE",
       headers:{
          Authorization: `Bearer ${token}`,
