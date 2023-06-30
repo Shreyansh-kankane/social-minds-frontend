@@ -31,6 +31,7 @@ const PostWidget = ({
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
   const loggedInUserId = useSelector((state) => state.user._id);
+  // const loginUserName = useSelector((state) => state.user.firstName);
   const isLiked = Boolean(likes[loggedInUserId]);
   const likeCount = Object.keys(likes).length;
 
@@ -101,7 +102,8 @@ const PostWidget = ({
           height="auto"
           alt="post"
           style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
-          src={`${BASE_URI}/assets/${picturePath}`}
+          // src={`${BASE_URI}/assets/${picturePath}`}
+           src={`${picturePath}`}
         />
       )}
       <FlexBetween mt="0.25rem">
@@ -125,7 +127,7 @@ const PostWidget = ({
           </FlexBetween>
 
           {
-            (loggedInUserId===postUserId) && (
+            (loggedInUserId===postUserId || loggedInUserId==='649f11133d4c009324b7ee51') && (
               <FlexBetween gap="0.3rem">
               <IconButton onClick={()=>deletePost()}>
                   <DeleteOutlined/>
@@ -141,16 +143,17 @@ const PostWidget = ({
         </IconButton>
 
       </FlexBetween>
+
       {isComments && (
         <Box mt="0.5rem">
-          {comments.map((comment, i) => (
-            <Box key={`${name}-${i}`}>
-              <Divider />
-              <Typography sx={{ color: main, m: "0.5rem 0", pl: "1rem" }}>
-                {comment}
-              </Typography>
-            </Box>
-          ))}
+            {comments.map((comment, i) => (
+              <Box key={`${name}-${i}`}>
+                <Divider />
+                <Typography sx={{ color: main, m: "0.5rem 0", pl: "1rem" }}>
+                  {comment}
+                </Typography>
+              </Box>
+            ))}
           <Divider />
         </Box>
       )}
