@@ -62,8 +62,9 @@ const MyPostWidget = ({ picturePath }) => {
     }
     else {
       const errorData = await response.json(); 
-      const errorMessage = errorData.message;
+      const errorMessage = errorData.error;
       toast.error(errorMessage);
+      return;
     }
 
   };
