@@ -25,6 +25,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "state";
 import { BASE_URI } from "helper";
+import { toast } from "react-hot-toast";
 
 
 const MyPostWidget = ({ picturePath }) => {
@@ -53,10 +54,18 @@ const MyPostWidget = ({ picturePath }) => {
       headers: { Authorization: `Bearer ${token}` },
       body: formData,
     });
-    const posts = await response.json();
-    dispatch(setPosts({ posts }));
-    setImage(null);
-    setPost("");
+    if(response.ok){
+        const posts = await response.json();
+        dispatch(setPosts({ posts }));
+        setImage(null);
+        setPost("");
+    }
+    else {
+      const errorData = await response.json(); 
+      const errorMessage = errorData.message;
+      toast.error(errorMessage);
+    }
+
   };
 
   return (
