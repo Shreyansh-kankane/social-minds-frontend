@@ -54,13 +54,13 @@ import {
         {/* THIRD ROW */}
         <Box p="1rem 0">
           <FlexBetween mb="0.5rem">
-            <Typography color={medium}>  <NavLink to='/alumni' style={{textDecoration:'none'}}>  Alumni management </NavLink> </Typography>
+            <Typography color={medium}>  <NavLink to='/users' style={{textDecoration:'none'}}>  Users </NavLink> </Typography>
             <Typography color={main} fontWeight="500">
                 Get Connected
             </Typography>
           </FlexBetween>
           <FlexBetween>
-            <Typography color={medium}> <NavLink to='/organisation' style={{textDecoration:'none'}}> Organisations  </NavLink>  </Typography>
+            <Typography color={medium}> <NavLink to='/organisation' style={{textDecoration:'none'}}> Organisation  </NavLink>  </Typography>
             <Typography color={main} fontWeight="500">
                 Get Registered
             </Typography>

@@ -65,9 +65,9 @@ const MyPostWidget = ({ picturePath }) => {
       const errorMessage = errorData.error;
       toast.error(errorMessage);
       setImage(null);
+      // setPost("");
       return;
     }
-
   };
 
   return (
