@@ -18,12 +18,12 @@ const Peoples = () => {
 
   useEffect(() => {
     const getPeoples = async () => {
-    const response = await fetch(
-      `${BASE_URI}/users/`,
-      {
-        method: "GET",
-        headers: { Authorization: `Bearer ${token}` },
-      }
+      const response = await fetch(
+        `${BASE_URI}/users/`,
+        {
+          method: "GET",
+          headers: { Authorization: `Bearer ${token}` },
+        }
     );
     const data = await response.json();
     // dispatch(setFriends({ friends: data }));

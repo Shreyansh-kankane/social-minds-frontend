@@ -15,13 +15,13 @@ import Peoples from "scenes/widgets/Peoples";
 
 function App() {
   const mode = useSelector((state) => state.mode);
-  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]); // creating theme
   const isAuth = Boolean(useSelector((state) => state.token));
 
   return (
     <div className="app">
       <BrowserRouter>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}> 
           <CssBaseline />
           <Routes>
           {/* <Route path='/' element={<Layout progress={this.state.progress}/>}/> */}

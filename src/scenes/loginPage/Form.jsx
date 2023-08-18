@@ -13,7 +13,7 @@ import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogin } from "state";
-import Dropzone from "react-dropzone";
+import Dropzone from "react-dropzone"; 
 import FlexBetween from "components/FlexBetween";
 import { BASE_URI } from "helper";
 import { toast } from "react-hot-toast";
@@ -49,7 +49,9 @@ const initialValuesLogin = {
 };
 
 const Form = () => {
+  
   const [pageType, setPageType] = useState("login");
+
   const { palette } = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -66,6 +68,7 @@ const Form = () => {
     }
     formData.append("picturePath", values.picture.name);
     toast.loading("loading...");
+
     const savedUserResponse = await fetch(
       `${BASE_URI}/auth/register`,
       {
@@ -73,6 +76,7 @@ const Form = () => {
         body: formData,
       }
     );
+    
     if(savedUserResponse.status!==201){
       toast.dismiss();
       toast.error("User already in use");
