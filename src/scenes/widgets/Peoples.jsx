@@ -36,7 +36,7 @@ getPeoples();
 
   return (
         <>
-        <Navbar />
+      <Navbar />
       <WidgetWrapper>
       <Typography
         color={palette.neutral.dark}
