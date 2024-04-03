@@ -10,7 +10,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-
+    <script>
+        (function(h, o, u, n, d) {
+            h = h[d] = h[d] || { q: [], onReady: function(c) { h.q.push(c) } };
+            d = o.createElement(u); d.async = 1; d.src = n;
+            n = o.getElementsByTagName(u)[0]; n.parentNode.insertBefore(d, n);
+        })(window, document, 'script', 'https://www.datadoghq-browser-agent.com/us5/v5/datadog-rum.js', 'DD_RUM');
+        window.DD_RUM.onReady(function() {
+         window.DD_RUM.init({
+                clientToken: 'pub14e586f0c5bc796444555c011d921f76',
+                applicationId: 'c61ce4bb-bb8c-4eeb-b09b-8e59b9b7b296',
+                site: 'us5.datadoghq.com',
+                service: 'social-mind',
+                env: '<ENV_NAME>',
+                sessionSampleRate: 100,
+                sessionReplaySampleRate: 100,
+                trackUserInteractions: true,
+                trackResources: true,
+                trackLongTasks: true,
+                defaultPrivacyLevel: 'allow'
+            });
+            window.DD_RUM.setUser({
+                 name: '',
+                 email: '',
+            });
+        });
+    </script>
 </head>
 <body>
         <div class="hero">
