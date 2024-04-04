@@ -18,6 +18,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
 import { Toaster } from "react-hot-toast";
+import DatadogScript from "components/Datadog";
 
 const persistConfig = { key: "root", storage, version: 1 };
 const persistedReducer = persistReducer(persistConfig, authReducer);
@@ -40,6 +41,7 @@ root.render(
         position="top-right"
         reverseOrder={false}
       />
+      <DatadogScript />
       <PersistGate loading={null} persistor={persistStore(store)}>
         <App />
       </PersistGate>
